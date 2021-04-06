@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Magenic.TransactionDetailPage"
+    Title="Transaction Detail">
+    <ContentPage.Content>
+         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <WebView x:Name="webView" 
+                     AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                     AbsoluteLayout.LayoutFlags="All"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Source="{Binding VendorUrl}"
+                     IsVisible="False" />
+            <ActivityIndicator x:Name="activityIndicator"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+                               IsRunning="True"
+                               IsVisible="True" />
+         </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

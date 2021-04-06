@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Magenic"
+             x:Class="Magenic.MainPage"
+             Title="Magenic Masters">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:IntToBoolConverter x:Key="intToBool" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout x:DataType="local:SignUpViewModel"
+                     Margin="20">
+            <StackLayout.BindingContext>
+                <local:SignUpViewModel />
+            </StackLayout.BindingContext>
+            <Entry x:Name="FirstNameEntry"
+                   Placeholder="First Name"
+                   Text="{Binding FirstName}" />
+            <Entry x:Name="LastNameEntry"
+                   Placeholder="Last Name"
+                   Text="{Binding LastName}" />
+            <Entry x:Name="EmailEntry"
+                   Placeholder="Email"
+                   Text="{Binding Email}" />
+            <Entry x:Name="PhoneEntry"
+                   Placeholder="Phone"
+                   Text="{Binding Phone}" />
+            <Entry x:Name="PasswordEntry"
+                   Placeholder="Password"
+                   Text="{Binding Password}"
+                   IsPassword="True" />
+            <StackLayout Orientation="Horizontal">
+                <Label VerticalOptions="Center">Do you agree to our privacy policy?</Label>
+                <Switch IsToggled="{Binding AgreedToTerms}" />
+            </StackLayout>
+            <Button VerticalOptions="Center"
+                    Text="Sign Up"
+                    Command="{Binding SignUpCommand}" />
+            <Button VerticalOptions="Center"
+                    Text="Log In"
+                    Clicked="OnLogInButtonClicked"
+                    IsEnabled="{Binding Source={x:Reference PasswordEntry},
+                                    Path=Text.Length,
+                                    Converter={StaticResource intToBool}}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

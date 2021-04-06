@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Magenic.DashboardPage">
+    <StackLayout>
+        <CollectionView ItemsSource="{Binding Transactions}"
+                        SelectionMode="Single"
+                        SelectionChanged="OnSelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10"
+                          RowDefinitions="Auto, *"
+                          ColumnDefinitions="Auto, *">
+                        <Label Grid.Column="1"
+                               Text="{Binding Vendor}"
+                               FontAttributes="Bold" />
+                        <Label Grid.Row="0"
+                               Grid.Column="2"
+                               Text="{Binding Amount}"
+                               FontAttributes="Bold"
+                               HorizontalOptions="End" />
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding Date}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
